@@ -1,0 +1,39 @@
+{
+  "model": "flat-by-type, company-as-tag",
+  "root": "vaults/content/leetcode-vault",
+  "folders": {
+    "problems/": {
+      "holds": "one note per problem",
+      "filename": "clean-slug.md (leetcode number lives in frontmatter, not filename)",
+      "frontmatter_required": ["title", "tags", "leetcode", "difficulty", "technique", "companies", "status"]
+    },
+    "patterns/": {
+      "holds": "reusable techniques shared across companies",
+      "filename": "clean-slug.md"
+    },
+    "prep/": {
+      "holds": "concept maps and study plans",
+      "filename": "clean-slug.md"
+    },
+    "companies/": {
+      "holds": "one curated index page per company",
+      "filename": "<company>.md"
+    }
+  },
+  "rules": [
+    "Wikilinks are bare: [[reconstruct-itinerary]], never [[problems/reconstruct-itinerary]].",
+    "Filenames are globally unique so links resolve from anywhere.",
+    "Company is a tag (frontmatter 'tags' + 'companies'), never a folder. Do not create company/problems/ subfolders.",
+    "To surface a problem on a company page: add the company to tags + companies frontmatter, then add a row to companies/<company>.md. Never duplicate the problem file.",
+    "No empty folders, no raw/ in the vault. Raw scrape dumps go in apps/pinterest-practice/raw/."
+  ],
+  "problem_frontmatter_template": {
+    "title": "<Human Title>",
+    "tags": ["<company>", "problem", "<pattern-tags>"],
+    "leetcode": "<number>",
+    "difficulty": "easy|medium|hard",
+    "technique": "[[<pattern-slug>]]",
+    "companies": ["<company>"],
+    "status": "todo|done"
+  }
+}
